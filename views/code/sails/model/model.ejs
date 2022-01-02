@@ -1,0 +1,41 @@
+﻿/**
+ * <%= table %>.js
+ *
+ * @description :: [<%= table %>] represents a set of structured data, called records. It usually correspond to a table/collection in a database, 
+ *                 attributes correspond to columns/fields, and records correspond to rows/documents.
+ *
+ * @author      :: <%= sails._s.capitalize(code_author) %>
+ * @help        :: See https://sailsjs.com/documentation/concepts/models-and-orm/models
+ *
+ * Created at   :: <%= new Date();%>
+ * Modified at  :: <%= new Date();%>
+ */
+
+var baseModel = require('./BaseModel'),
+ _ = require('lodash');
+
+module.exports = _.merge({}, baseModel, {	
+    tableName: '<%= table %>',
+    attributes: {
+        <% column_names.forEach(function (column) { %>
+          <%= column.column_name %> : { type: '<%= column.data_type %>' %> <% if(column.data_type=='STRING') { %> <%= column.is_nullable ? ',allowNull: true' : ',allowNull: false' -%> <% } %>},
+        <% }); %>
+    },
+    // Lifecycle Callbacks
+    beforeCreate: function (values, cb) {
+        values.code = sails.uuid();
+        values.created_at = sails.moment().format();
+        values.updated_at = sails.moment().format();
+        values.update_count = 1;
+        if (!values.hasOwnProperty('code')) {
+            values.code = sails.uuid.uuid();
+        }
+        return cb();
+    },
+    beforeUpdate: function (values, cb) {
+        values.updated_at = sails.moment().format();
+        values.update_count = values.update_count + 1;
+        return cb();
+    }
+});
+

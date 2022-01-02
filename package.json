@@ -1,0 +1,62 @@
+{
+  "name": "zynomi-api-nodejs",
+  "private": true,
+  "version": "0.0.0",
+  "description": "API Built on sails.js",
+  "keywords": [],
+  "dependencies": {
+    "@sailshq/connect-redis": "^3.2.1",
+    "@sailshq/lodash": "^3.10.3",
+    "@sailshq/socket.io-redis": "^5.2.0",
+    "aws-sdk": "^2.861.0",
+    "bcrypt": "^5.0.1",
+    "crypto": "^1.0.1",
+    "crypto-js": "^4.0.0",
+    "docx-templates": "^4.6.0",
+    "dotenv": "^8.2.0",
+    "grunt": "1.0.4",
+    "http": "0.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mailgun-js": "^0.22.0",
+    "moment": "^2.18.1",
+    "node-serialize": "0.0.4",
+    "pm2": "^4.5.5",
+    "postman-to-openapi": "^1.10.0",
+    "request": "^2.81.0",
+    "sails": "^1.4.2",
+    "sails-hook-custom-blueprints": "^1.0.0",
+    "sails-hook-dotenv": "^0.1.1",
+    "sails-hook-grunt": "^4.0.0",
+    "sails-hook-orm": "^3.0.2",
+    "sails-hook-sockets": "^2.0.0",
+    "sails-hook-swagger-generator": "^3.3.0",
+    "sails-hook-uploads": "^0.4.3",
+    "sails-mongo": "^1.2.0",
+    "sails-postgresql": "^2.0.0",
+    "sails-util-micro-apps": "^1.1.1",
+    "skipper-s3": "^0.6.0",
+    "underscore": "^1.12.0",
+    "underscore.string": "^3.3.5",
+    "uuid": "^8.3.2",
+    "winston": "^3.0.0"
+  },
+  "devDependencies": {
+    "eslint": "5.16.0"
+  },
+  "scripts": {
+    "start": "NODE_ENV=production node app.js",
+    "test": "npm run lint && npm run custom-tests && echo 'Done.'",
+    "lint": "./node_modules/eslint/bin/eslint.js . --max-warnings=0 --report-unused-disable-directives && echo '✔  Your .js files look good.'",
+    "custom-tests": "echo \"(No other custom tests yet.)\" && echo"
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zynomilabs/zynomi-api-nodejs.git"
+  },
+  "author": "Zynomi Technologies Pvt. Ltd.",
+  "license": "",
+  "engines": {
+    "node": "^12.14"
+  }
+}

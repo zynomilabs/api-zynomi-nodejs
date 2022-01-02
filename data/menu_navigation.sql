@@ -1,0 +1,58 @@
+WITH recursive navigation_from_parents AS
+(
+       -- Classes with no parent, our starting point
+       SELECT id,
+              NAME AS title,
+              icon,
+              link,
+              '{}'::int[] AS parents,
+              0           AS level
+       FROM   navigation
+       WHERE  parent_id IS NULL
+       UNION ALL
+       -- Recursively find sub-classes and append them to the result-set
+       SELECT c.id,
+              c.NAME AS title,
+              c.icon,
+              c.link,
+              parents
+                     || c.parent_id,
+              level+1
+       FROM   navigation_from_parents p
+       JOIN   navigation c
+       ON     c.parent_id = p.id
+       WHERE  NOT c.id = ANY(parents) ), navigation_from_children AS
+(
+         -- Now start from the leaf nodes and recurse to the top-level
+         -- Leaf nodes are not parents (level > 0) and have no other row
+         -- pointing to them as their parents, directly or indirectly
+         -- (not id = any(parents))
+         SELECT   c.parent_id,
+                  --json_agg((c.name,c.link)) ::jsonb as js
+                  json_agg(jsonb_build_object('id',c.id,'parent_id',c.parent_id,'icon',c.icon,'Title', c.NAME,'link', c.link)) ::jsonb AS js
+         FROM     navigation_from_parents tree
+         JOIN     navigation c
+         using   (id)
+         WHERE    level > 0
+         AND      NOT id = ANY(parents)
+         GROUP BY c.parent_id
+         UNION ALL
+         -- build our JSON document, one piece at a time
+         -- as we're traversing our graph from the leaf nodes,
+         -- the bottom-up traversal makes it possible to accumulate
+         -- sub-classes as JSON document parts that we glue together
+         SELECT c.parent_id,
+                jsonb_build_object('Id', c.id)
+                       || jsonb_build_object('icon', c.icon)
+                       || jsonb_build_object('Title', c.NAME)
+                       || jsonb_build_object('link', c.link)
+                       || jsonb_build_object('childern', js) AS js
+         FROM   navigation_from_children tree
+         JOIN   navigation c
+         ON     c.id = tree.parent_id )
+-- Finally, the traversal being done, we can aggregate
+-- the top-level classes all into the same JSON document,
+-- an array.
+SELECT jsonb_pretty(jsonb_agg(js)) AS menus
+FROM   navigation_from_children
+WHERE  parent_id IS NULL
