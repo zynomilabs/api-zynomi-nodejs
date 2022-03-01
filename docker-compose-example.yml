@@ -10,15 +10,14 @@ services:
     tty: true
     environment:
       NODE_ENV: production
-      DB_URI: ''
-      DB_SCHEMA: 'zypress'
+      DB_URI: ""
+      DB_SCHEMA: "zypress"
       SAILS_TEMP_FOLDER_PATH: ".temp/"
       SAILS_CODE_GEN_FOLDER_PATH: ".code/"
       WORD_TEMPLATES_FOLDER_PATH: "views/templates/"
-
     ports:
-     - 1337:1337
-    volumes:
-      - ./zynomi_data:/usr/src/app/views/
+      - 1337:1337
+    #volumes:
+    #  - ./zynomi_data:/usr/src/app/views/
 networks:
   backend:

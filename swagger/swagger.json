@@ -33,12 +33,24 @@
       "description": "Sails blueprint actions for the **address** model"
     },
     {
+      "name": "bots",
+      "description": "Sails blueprint actions for the **bots** model"
+    },
+    {
       "name": "codegen",
       "description": "Sails blueprint actions for the **codegen** model"
     },
     {
       "name": "contacts",
       "description": "Sails blueprint actions for the **contacts** model"
+    },
+    {
+      "name": "currency",
+      "description": "Sails blueprint actions for the **currency** model"
+    },
+    {
+      "name": "exchange_rate",
+      "description": "Sails blueprint actions for the **exchange_rate** model"
     },
     {
       "name": "master",
@@ -51,6 +63,18 @@
     {
       "name": "navigation",
       "description": "Sails blueprint actions for the **navigation** model"
+    },
+    {
+      "name": "payment_type",
+      "description": "Sails blueprint actions for the **payment_type** model"
+    },
+    {
+      "name": "payments",
+      "description": "Sails blueprint actions for the **payments** model"
+    },
+    {
+      "name": "role",
+      "description": "Sails blueprint actions for the **role** model"
     },
     {
       "name": "users",
@@ -222,6 +246,95 @@
           "published_at": {}
         }
       },
+      "bots": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/bots-without-required-constraint"
+          }
+        ]
+      },
+      "bots-without-required-constraint": {
+        "type": "object",
+        "description": "Sails ORM Model **bots**",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "uniqueItems": true,
+            "description": "Note Sails special attributes: autoIncrement"
+          },
+          "code": {
+            "type": "string"
+          },
+          "created_by": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "updated_by": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "update_count": {
+            "type": "number",
+            "format": "double"
+          },
+          "is_enabled": {
+            "type": "boolean"
+          },
+          "mark_as_delete": {
+            "type": "boolean"
+          },
+          "additional_attributes": {},
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "bash_command": {
+            "type": "string",
+            "nullable": true
+          },
+          "bot_file": {
+            "type": "string",
+            "nullable": true
+          },
+          "git_repo_url": {
+            "type": "string",
+            "nullable": true
+          },
+          "git_repo_username": {
+            "type": "string",
+            "nullable": true
+          },
+          "git_repo_password": {
+            "type": "string",
+            "nullable": true
+          },
+          "schedule_cron": {
+            "type": "string",
+            "nullable": true
+          },
+          "tenant": {
+            "type": "string",
+            "nullable": true
+          },
+          "published_at": {}
+        }
+      },
       "codegen": {
         "type": "object",
         "allOf": [
@@ -321,6 +434,153 @@
             "nullable": true
           },
           "role_type": {
+            "type": "string",
+            "nullable": true
+          },
+          "published_at": {}
+        }
+      },
+      "currency": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/currency-without-required-constraint"
+          }
+        ]
+      },
+      "currency-without-required-constraint": {
+        "type": "object",
+        "description": "Sails ORM Model **currency**",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "uniqueItems": true,
+            "description": "Note Sails special attributes: autoIncrement"
+          },
+          "code": {
+            "type": "string"
+          },
+          "created_by": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "updated_by": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "update_count": {
+            "type": "number",
+            "format": "double"
+          },
+          "is_enabled": {
+            "type": "boolean"
+          },
+          "mark_as_delete": {
+            "type": "boolean"
+          },
+          "additional_attributes": {},
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "country_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "currency_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "currency_three_letter_alpha_num_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "currency_three_letter_num_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "published_at": {}
+        }
+      },
+      "exchange_rate": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/exchange_rate-without-required-constraint"
+          }
+        ]
+      },
+      "exchange_rate-without-required-constraint": {
+        "type": "object",
+        "description": "Sails ORM Model **exchange_rate**",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "uniqueItems": true,
+            "description": "Note Sails special attributes: autoIncrement"
+          },
+          "code": {
+            "type": "string"
+          },
+          "created_by": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "updated_by": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "update_count": {
+            "type": "number",
+            "format": "double"
+          },
+          "is_enabled": {
+            "type": "boolean"
+          },
+          "mark_as_delete": {
+            "type": "boolean"
+          },
+          "additional_attributes": {},
+          "base_currency_three_letter_alpha_num_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "target_currency_three_letter_alpha_num_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "rate": {
+            "type": "string",
+            "nullable": true
+          },
+          "exchange_date": {},
+          "api_source": {
             "type": "string",
             "nullable": true
           },
@@ -537,17 +797,17 @@
           "published_at": {}
         }
       },
-      "users": {
+      "payment_type": {
         "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/users-without-required-constraint"
+            "$ref": "#/components/schemas/payment_type-without-required-constraint"
           }
         ]
       },
-      "users-without-required-constraint": {
+      "payment_type-without-required-constraint": {
         "type": "object",
-        "description": "Sails ORM Model **users**",
+        "description": "Sails ORM Model **payment_type**",
         "properties": {
           "id": {
             "type": "integer",
@@ -587,40 +847,206 @@
             "type": "boolean"
           },
           "additional_attributes": {},
-          "login": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "published_at": {}
+        }
+      },
+      "payments": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/payments-without-required-constraint"
+          }
+        ]
+      },
+      "payments-without-required-constraint": {
+        "type": "object",
+        "description": "Sails ORM Model **payments**",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "uniqueItems": true,
+            "description": "Note Sails special attributes: autoIncrement"
+          },
+          "code": {
             "type": "string"
           },
-          "hashed_password": {
-            "type": "string"
+          "created_by": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
           },
-          "firstname": {
-            "type": "string"
+          "updated_by": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
           },
-          "lastname": {
-            "type": "string"
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
           },
-          "email": {
-            "type": "string"
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
           },
-          "admin": {
-            "type": "boolean"
-          },
-          "last_login_on": {},
-          "language": {
-            "type": "string"
-          },
-          "auth_source_id": {
+          "update_count": {
             "type": "number",
             "format": "double"
           },
-          "salt": {
-            "type": "string"
-          },
-          "must_change_password": {
+          "is_enabled": {
             "type": "boolean"
           },
-          "passwd_changed_on": {},
+          "mark_as_delete": {
+            "type": "boolean"
+          },
+          "additional_attributes": {},
+          "invoice_nuber": {
+            "type": "string",
+            "nullable": true
+          },
+          "payment_to_user": {
+            "type": "string",
+            "nullable": true
+          },
+          "payment_date": {},
+          "payment_type": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "payment_amount": {
+            "type": "string",
+            "nullable": true
+          },
+          "payment_currency": {
+            "type": "string",
+            "nullable": true
+          },
+          "currency_exchange_rate": {
+            "type": "string",
+            "nullable": true
+          },
+          "payment_status": {
+            "type": "string",
+            "nullable": true
+          },
           "published_at": {}
+        }
+      },
+      "role": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/role-without-required-constraint"
+          }
+        ]
+      },
+      "role-without-required-constraint": {
+        "type": "object",
+        "description": "Sails ORM Model **role**",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "uniqueItems": true,
+            "description": "Note Sails special attributes: autoIncrement"
+          },
+          "code": {
+            "type": "string"
+          },
+          "created_by": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "updated_by": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "update_count": {
+            "type": "number",
+            "format": "double"
+          },
+          "is_enabled": {
+            "type": "boolean"
+          },
+          "mark_as_delete": {
+            "type": "boolean"
+          },
+          "additional_attributes": {},
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "published_at": {}
+        }
+      },
+      "users": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/users-without-required-constraint"
+          }
+        ]
+      },
+      "users-without-required-constraint": {
+        "type": "object",
+        "description": "Sails ORM Model **users**",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "uniqueItems": true,
+            "description": "Note Sails special attributes: autoIncrement"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "role": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "is_super_admin": {
+            "type": "string",
+            "nullable": true
+          }
         }
       },
       "websettings": {
@@ -711,6 +1137,18 @@
         },
         "description": "The desired **address** record's primary key value"
       },
+      "ModelPKParam-bots": {
+        "in": "path",
+        "name": "_id",
+        "required": true,
+        "schema": {
+          "type": "integer",
+          "format": "int64",
+          "uniqueItems": true,
+          "description": "Note Sails special attributes: autoIncrement"
+        },
+        "description": "The desired **bots** record's primary key value"
+      },
       "ModelPKParam-codegen": {
         "in": "path",
         "name": "_id",
@@ -734,6 +1172,30 @@
           "description": "Note Sails special attributes: autoIncrement"
         },
         "description": "The desired **contacts** record's primary key value"
+      },
+      "ModelPKParam-currency": {
+        "in": "path",
+        "name": "_id",
+        "required": true,
+        "schema": {
+          "type": "integer",
+          "format": "int64",
+          "uniqueItems": true,
+          "description": "Note Sails special attributes: autoIncrement"
+        },
+        "description": "The desired **currency** record's primary key value"
+      },
+      "ModelPKParam-exchange_rate": {
+        "in": "path",
+        "name": "_id",
+        "required": true,
+        "schema": {
+          "type": "integer",
+          "format": "int64",
+          "uniqueItems": true,
+          "description": "Note Sails special attributes: autoIncrement"
+        },
+        "description": "The desired **exchange_rate** record's primary key value"
       },
       "ModelPKParam-master": {
         "in": "path",
@@ -770,6 +1232,42 @@
           "description": "Note Sails special attributes: autoIncrement"
         },
         "description": "The desired **navigation** record's primary key value"
+      },
+      "ModelPKParam-payment_type": {
+        "in": "path",
+        "name": "_id",
+        "required": true,
+        "schema": {
+          "type": "integer",
+          "format": "int64",
+          "uniqueItems": true,
+          "description": "Note Sails special attributes: autoIncrement"
+        },
+        "description": "The desired **payment_type** record's primary key value"
+      },
+      "ModelPKParam-payments": {
+        "in": "path",
+        "name": "_id",
+        "required": true,
+        "schema": {
+          "type": "integer",
+          "format": "int64",
+          "uniqueItems": true,
+          "description": "Note Sails special attributes: autoIncrement"
+        },
+        "description": "The desired **payments** record's primary key value"
+      },
+      "ModelPKParam-role": {
+        "in": "path",
+        "name": "_id",
+        "required": true,
+        "schema": {
+          "type": "integer",
+          "format": "int64",
+          "uniqueItems": true,
+          "description": "Note Sails special attributes: autoIncrement"
+        },
+        "description": "The desired **role** record's primary key value"
       },
       "ModelPKParam-users": {
         "in": "path",
@@ -843,46 +1341,6 @@
     }
   },
   "paths": {
-    "/authenticate": {
-      "post": {
-        "summary": "/authenticate",
-        "tags": [
-          "users"
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "The requested resource"
-          },
-          "404": {
-            "description": "Resource not found"
-          },
-          "500": {
-            "description": "Internal server error"
-          }
-        }
-      }
-    },
-    "/authenticateToken": {
-      "post": {
-        "summary": "/authenticateToken",
-        "tags": [
-          "users"
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "The requested resource"
-          },
-          "404": {
-            "description": "Resource not found"
-          },
-          "500": {
-            "description": "Internal server error"
-          }
-        }
-      }
-    },
     "/file/upload": {
       "post": {
         "summary": "/file/upload",
@@ -1633,6 +2091,259 @@
         }
       }
     },
+    "/bots": {
+      "get": {
+        "summary": "List bots (find where)",
+        "description": "Find a list of **bots** records that match the specified criteria.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-where",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-where"
+        },
+        "tags": [
+          "bots"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AttributeFilterParam"
+          },
+          {
+            "$ref": "#/components/parameters/WhereQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/LimitQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/SkipQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/SortQueryParam"
+          },
+          {
+            "in": "query",
+            "name": "select",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,name,description,bash_command,bot_file,git_repo_url,git_repo_username,git_repo_password,schedule_cron,tenant,published_at"
+            },
+            "description": "The attributes to include in the result, specified as a comma-delimited list. By default, all attributes are selected. Not valid for plural (“collection”) association attributes."
+          },
+          {
+            "in": "query",
+            "name": "omit",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,name,description,bash_command,bot_file,git_repo_url,git_repo_username,git_repo_password,schedule_cron,tenant,published_at"
+            },
+            "description": "The attributes to exclude from the result, specified as a comma-delimited list. Cannot be used in conjuction with `select`. Not valid for plural (“collection”) association attributes."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Responds with a paged list of **bots** records that match the specified criteria",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/bots"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create bots",
+        "description": "Create a new **bots** record.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/create",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/create"
+        },
+        "tags": [
+          "bots"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Responds with a JSON dictionary representing the newly created **bots** instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/bots"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation errors; details in JSON response"
+          },
+          "404": {
+            "description": "Resource not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "requestBody": {
+          "description": "JSON dictionary representing the bots instance to create.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/bots"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bots/{_id}": {
+      "get": {
+        "summary": "Get bots (find one)",
+        "description": "Look up the **bots** record with the specified ID.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-one",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-one"
+        },
+        "tags": [
+          "bots"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ModelPKParam-bots"
+          },
+          {
+            "in": "query",
+            "name": "select",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,name,description,bash_command,bot_file,git_repo_url,git_repo_username,git_repo_password,schedule_cron,tenant,published_at"
+            },
+            "description": "The attributes to include in the result, specified as a comma-delimited list. By default, all attributes are selected. Not valid for plural (“collection”) association attributes."
+          },
+          {
+            "in": "query",
+            "name": "omit",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,name,description,bash_command,bot_file,git_repo_url,git_repo_username,git_repo_password,schedule_cron,tenant,published_at"
+            },
+            "description": "The attributes to exclude from the result, specified as a comma-delimited list. Cannot be used in conjuction with `select`. Not valid for plural (“collection”) association attributes."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Responds with a single **bots** record as a JSON dictionary",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/bots"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Response denoting **bots** record with specified ID **NOT** found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update bots",
+        "description": "Update an existing **bots** record.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/update",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/update"
+        },
+        "tags": [
+          "bots"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ModelPKParam-bots"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Responds with the newly updated **bots** record as a JSON dictionary",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/bots"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation errors; details in JSON response"
+          },
+          "404": {
+            "description": "Cannot update, **bots** record with specified ID **NOT** found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "requestBody": {
+          "description": "JSON dictionary representing the bots instance to update.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/bots-without-required-constraint"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete bots (destroy)",
+        "description": "Delete the **bots** record with the specified ID.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/destroy",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/destroy"
+        },
+        "tags": [
+          "bots"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ModelPKParam-bots"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Responds with a JSON dictionary representing the destroyed **bots** instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/bots"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cannot destroy, **bots** record with specified ID **NOT** found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
     "/codegen": {
       "get": {
         "summary": "List codegen (find where)",
@@ -2132,6 +2843,512 @@
           },
           "404": {
             "description": "Cannot destroy, **contacts** record with specified ID **NOT** found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/currency": {
+      "get": {
+        "summary": "List currency (find where)",
+        "description": "Find a list of **currency** records that match the specified criteria.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-where",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-where"
+        },
+        "tags": [
+          "currency"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AttributeFilterParam"
+          },
+          {
+            "$ref": "#/components/parameters/WhereQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/LimitQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/SkipQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/SortQueryParam"
+          },
+          {
+            "in": "query",
+            "name": "select",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,name,country_name,currency_name,currency_three_letter_alpha_num_code,currency_three_letter_num_code,description,published_at"
+            },
+            "description": "The attributes to include in the result, specified as a comma-delimited list. By default, all attributes are selected. Not valid for plural (“collection”) association attributes."
+          },
+          {
+            "in": "query",
+            "name": "omit",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,name,country_name,currency_name,currency_three_letter_alpha_num_code,currency_three_letter_num_code,description,published_at"
+            },
+            "description": "The attributes to exclude from the result, specified as a comma-delimited list. Cannot be used in conjuction with `select`. Not valid for plural (“collection”) association attributes."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Responds with a paged list of **currency** records that match the specified criteria",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/currency"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create currency",
+        "description": "Create a new **currency** record.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/create",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/create"
+        },
+        "tags": [
+          "currency"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Responds with a JSON dictionary representing the newly created **currency** instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/currency"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation errors; details in JSON response"
+          },
+          "404": {
+            "description": "Resource not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "requestBody": {
+          "description": "JSON dictionary representing the currency instance to create.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/currency"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/currency/{_id}": {
+      "get": {
+        "summary": "Get currency (find one)",
+        "description": "Look up the **currency** record with the specified ID.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-one",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-one"
+        },
+        "tags": [
+          "currency"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ModelPKParam-currency"
+          },
+          {
+            "in": "query",
+            "name": "select",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,name,country_name,currency_name,currency_three_letter_alpha_num_code,currency_three_letter_num_code,description,published_at"
+            },
+            "description": "The attributes to include in the result, specified as a comma-delimited list. By default, all attributes are selected. Not valid for plural (“collection”) association attributes."
+          },
+          {
+            "in": "query",
+            "name": "omit",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,name,country_name,currency_name,currency_three_letter_alpha_num_code,currency_three_letter_num_code,description,published_at"
+            },
+            "description": "The attributes to exclude from the result, specified as a comma-delimited list. Cannot be used in conjuction with `select`. Not valid for plural (“collection”) association attributes."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Responds with a single **currency** record as a JSON dictionary",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/currency"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Response denoting **currency** record with specified ID **NOT** found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update currency",
+        "description": "Update an existing **currency** record.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/update",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/update"
+        },
+        "tags": [
+          "currency"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ModelPKParam-currency"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Responds with the newly updated **currency** record as a JSON dictionary",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/currency"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation errors; details in JSON response"
+          },
+          "404": {
+            "description": "Cannot update, **currency** record with specified ID **NOT** found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "requestBody": {
+          "description": "JSON dictionary representing the currency instance to update.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/currency-without-required-constraint"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete currency (destroy)",
+        "description": "Delete the **currency** record with the specified ID.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/destroy",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/destroy"
+        },
+        "tags": [
+          "currency"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ModelPKParam-currency"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Responds with a JSON dictionary representing the destroyed **currency** instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/currency"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cannot destroy, **currency** record with specified ID **NOT** found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/exchange_rate": {
+      "get": {
+        "summary": "List exchange_rate (find where)",
+        "description": "Find a list of **exchange_rate** records that match the specified criteria.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-where",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-where"
+        },
+        "tags": [
+          "exchange_rate"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AttributeFilterParam"
+          },
+          {
+            "$ref": "#/components/parameters/WhereQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/LimitQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/SkipQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/SortQueryParam"
+          },
+          {
+            "in": "query",
+            "name": "select",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,base_currency_three_letter_alpha_num_code,target_currency_three_letter_alpha_num_code,rate,exchange_date,api_source,published_at"
+            },
+            "description": "The attributes to include in the result, specified as a comma-delimited list. By default, all attributes are selected. Not valid for plural (“collection”) association attributes."
+          },
+          {
+            "in": "query",
+            "name": "omit",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,base_currency_three_letter_alpha_num_code,target_currency_three_letter_alpha_num_code,rate,exchange_date,api_source,published_at"
+            },
+            "description": "The attributes to exclude from the result, specified as a comma-delimited list. Cannot be used in conjuction with `select`. Not valid for plural (“collection”) association attributes."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Responds with a paged list of **exchange_rate** records that match the specified criteria",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/exchange_rate"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create exchange_rate",
+        "description": "Create a new **exchange_rate** record.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/create",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/create"
+        },
+        "tags": [
+          "exchange_rate"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Responds with a JSON dictionary representing the newly created **exchange_rate** instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/exchange_rate"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation errors; details in JSON response"
+          },
+          "404": {
+            "description": "Resource not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "requestBody": {
+          "description": "JSON dictionary representing the exchange_rate instance to create.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/exchange_rate"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/exchange_rate/{_id}": {
+      "get": {
+        "summary": "Get exchange_rate (find one)",
+        "description": "Look up the **exchange_rate** record with the specified ID.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-one",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-one"
+        },
+        "tags": [
+          "exchange_rate"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ModelPKParam-exchange_rate"
+          },
+          {
+            "in": "query",
+            "name": "select",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,base_currency_three_letter_alpha_num_code,target_currency_three_letter_alpha_num_code,rate,exchange_date,api_source,published_at"
+            },
+            "description": "The attributes to include in the result, specified as a comma-delimited list. By default, all attributes are selected. Not valid for plural (“collection”) association attributes."
+          },
+          {
+            "in": "query",
+            "name": "omit",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,base_currency_three_letter_alpha_num_code,target_currency_three_letter_alpha_num_code,rate,exchange_date,api_source,published_at"
+            },
+            "description": "The attributes to exclude from the result, specified as a comma-delimited list. Cannot be used in conjuction with `select`. Not valid for plural (“collection”) association attributes."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Responds with a single **exchange_rate** record as a JSON dictionary",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/exchange_rate"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Response denoting **exchange_rate** record with specified ID **NOT** found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update exchange_rate",
+        "description": "Update an existing **exchange_rate** record.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/update",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/update"
+        },
+        "tags": [
+          "exchange_rate"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ModelPKParam-exchange_rate"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Responds with the newly updated **exchange_rate** record as a JSON dictionary",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/exchange_rate"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation errors; details in JSON response"
+          },
+          "404": {
+            "description": "Cannot update, **exchange_rate** record with specified ID **NOT** found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "requestBody": {
+          "description": "JSON dictionary representing the exchange_rate instance to update.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/exchange_rate-without-required-constraint"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete exchange_rate (destroy)",
+        "description": "Delete the **exchange_rate** record with the specified ID.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/destroy",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/destroy"
+        },
+        "tags": [
+          "exchange_rate"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ModelPKParam-exchange_rate"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Responds with a JSON dictionary representing the destroyed **exchange_rate** instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/exchange_rate"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cannot destroy, **exchange_rate** record with specified ID **NOT** found"
           },
           "500": {
             "description": "Internal server error"
@@ -2898,6 +4115,765 @@
         }
       }
     },
+    "/payment_type": {
+      "get": {
+        "summary": "List payment_type (find where)",
+        "description": "Find a list of **payment_type** records that match the specified criteria.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-where",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-where"
+        },
+        "tags": [
+          "payment_type"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AttributeFilterParam"
+          },
+          {
+            "$ref": "#/components/parameters/WhereQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/LimitQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/SkipQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/SortQueryParam"
+          },
+          {
+            "in": "query",
+            "name": "select",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,name,description,published_at"
+            },
+            "description": "The attributes to include in the result, specified as a comma-delimited list. By default, all attributes are selected. Not valid for plural (“collection”) association attributes."
+          },
+          {
+            "in": "query",
+            "name": "omit",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,name,description,published_at"
+            },
+            "description": "The attributes to exclude from the result, specified as a comma-delimited list. Cannot be used in conjuction with `select`. Not valid for plural (“collection”) association attributes."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Responds with a paged list of **payment_type** records that match the specified criteria",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/payment_type"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create payment_type",
+        "description": "Create a new **payment_type** record.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/create",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/create"
+        },
+        "tags": [
+          "payment_type"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Responds with a JSON dictionary representing the newly created **payment_type** instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/payment_type"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation errors; details in JSON response"
+          },
+          "404": {
+            "description": "Resource not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "requestBody": {
+          "description": "JSON dictionary representing the payment_type instance to create.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/payment_type"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/payment_type/{_id}": {
+      "get": {
+        "summary": "Get payment_type (find one)",
+        "description": "Look up the **payment_type** record with the specified ID.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-one",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-one"
+        },
+        "tags": [
+          "payment_type"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ModelPKParam-payment_type"
+          },
+          {
+            "in": "query",
+            "name": "select",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,name,description,published_at"
+            },
+            "description": "The attributes to include in the result, specified as a comma-delimited list. By default, all attributes are selected. Not valid for plural (“collection”) association attributes."
+          },
+          {
+            "in": "query",
+            "name": "omit",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,name,description,published_at"
+            },
+            "description": "The attributes to exclude from the result, specified as a comma-delimited list. Cannot be used in conjuction with `select`. Not valid for plural (“collection”) association attributes."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Responds with a single **payment_type** record as a JSON dictionary",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/payment_type"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Response denoting **payment_type** record with specified ID **NOT** found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update payment_type",
+        "description": "Update an existing **payment_type** record.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/update",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/update"
+        },
+        "tags": [
+          "payment_type"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ModelPKParam-payment_type"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Responds with the newly updated **payment_type** record as a JSON dictionary",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/payment_type"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation errors; details in JSON response"
+          },
+          "404": {
+            "description": "Cannot update, **payment_type** record with specified ID **NOT** found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "requestBody": {
+          "description": "JSON dictionary representing the payment_type instance to update.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/payment_type-without-required-constraint"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete payment_type (destroy)",
+        "description": "Delete the **payment_type** record with the specified ID.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/destroy",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/destroy"
+        },
+        "tags": [
+          "payment_type"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ModelPKParam-payment_type"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Responds with a JSON dictionary representing the destroyed **payment_type** instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/payment_type"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cannot destroy, **payment_type** record with specified ID **NOT** found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/payments": {
+      "get": {
+        "summary": "List payments (find where)",
+        "description": "Find a list of **payments** records that match the specified criteria.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-where",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-where"
+        },
+        "tags": [
+          "payments"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AttributeFilterParam"
+          },
+          {
+            "$ref": "#/components/parameters/WhereQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/LimitQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/SkipQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/SortQueryParam"
+          },
+          {
+            "in": "query",
+            "name": "select",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,invoice_nuber,payment_to_user,payment_date,payment_type,description,payment_amount,payment_currency,currency_exchange_rate,payment_status,published_at"
+            },
+            "description": "The attributes to include in the result, specified as a comma-delimited list. By default, all attributes are selected. Not valid for plural (“collection”) association attributes."
+          },
+          {
+            "in": "query",
+            "name": "omit",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,invoice_nuber,payment_to_user,payment_date,payment_type,description,payment_amount,payment_currency,currency_exchange_rate,payment_status,published_at"
+            },
+            "description": "The attributes to exclude from the result, specified as a comma-delimited list. Cannot be used in conjuction with `select`. Not valid for plural (“collection”) association attributes."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Responds with a paged list of **payments** records that match the specified criteria",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/payments"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create payments",
+        "description": "Create a new **payments** record.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/create",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/create"
+        },
+        "tags": [
+          "payments"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Responds with a JSON dictionary representing the newly created **payments** instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/payments"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation errors; details in JSON response"
+          },
+          "404": {
+            "description": "Resource not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "requestBody": {
+          "description": "JSON dictionary representing the payments instance to create.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/payments"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/payments/{_id}": {
+      "get": {
+        "summary": "Get payments (find one)",
+        "description": "Look up the **payments** record with the specified ID.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-one",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-one"
+        },
+        "tags": [
+          "payments"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ModelPKParam-payments"
+          },
+          {
+            "in": "query",
+            "name": "select",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,invoice_nuber,payment_to_user,payment_date,payment_type,description,payment_amount,payment_currency,currency_exchange_rate,payment_status,published_at"
+            },
+            "description": "The attributes to include in the result, specified as a comma-delimited list. By default, all attributes are selected. Not valid for plural (“collection”) association attributes."
+          },
+          {
+            "in": "query",
+            "name": "omit",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,invoice_nuber,payment_to_user,payment_date,payment_type,description,payment_amount,payment_currency,currency_exchange_rate,payment_status,published_at"
+            },
+            "description": "The attributes to exclude from the result, specified as a comma-delimited list. Cannot be used in conjuction with `select`. Not valid for plural (“collection”) association attributes."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Responds with a single **payments** record as a JSON dictionary",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/payments"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Response denoting **payments** record with specified ID **NOT** found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update payments",
+        "description": "Update an existing **payments** record.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/update",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/update"
+        },
+        "tags": [
+          "payments"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ModelPKParam-payments"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Responds with the newly updated **payments** record as a JSON dictionary",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/payments"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation errors; details in JSON response"
+          },
+          "404": {
+            "description": "Cannot update, **payments** record with specified ID **NOT** found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "requestBody": {
+          "description": "JSON dictionary representing the payments instance to update.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/payments-without-required-constraint"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete payments (destroy)",
+        "description": "Delete the **payments** record with the specified ID.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/destroy",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/destroy"
+        },
+        "tags": [
+          "payments"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ModelPKParam-payments"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Responds with a JSON dictionary representing the destroyed **payments** instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/payments"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cannot destroy, **payments** record with specified ID **NOT** found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/role": {
+      "get": {
+        "summary": "List role (find where)",
+        "description": "Find a list of **role** records that match the specified criteria.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-where",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-where"
+        },
+        "tags": [
+          "role"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AttributeFilterParam"
+          },
+          {
+            "$ref": "#/components/parameters/WhereQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/LimitQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/SkipQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/SortQueryParam"
+          },
+          {
+            "in": "query",
+            "name": "select",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,name,description,published_at"
+            },
+            "description": "The attributes to include in the result, specified as a comma-delimited list. By default, all attributes are selected. Not valid for plural (“collection”) association attributes."
+          },
+          {
+            "in": "query",
+            "name": "omit",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,name,description,published_at"
+            },
+            "description": "The attributes to exclude from the result, specified as a comma-delimited list. Cannot be used in conjuction with `select`. Not valid for plural (“collection”) association attributes."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Responds with a paged list of **role** records that match the specified criteria",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/role"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create role",
+        "description": "Create a new **role** record.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/create",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/create"
+        },
+        "tags": [
+          "role"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Responds with a JSON dictionary representing the newly created **role** instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/role"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation errors; details in JSON response"
+          },
+          "404": {
+            "description": "Resource not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "requestBody": {
+          "description": "JSON dictionary representing the role instance to create.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/role"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/role/{_id}": {
+      "get": {
+        "summary": "Get role (find one)",
+        "description": "Look up the **role** record with the specified ID.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-one",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-one"
+        },
+        "tags": [
+          "role"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ModelPKParam-role"
+          },
+          {
+            "in": "query",
+            "name": "select",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,name,description,published_at"
+            },
+            "description": "The attributes to include in the result, specified as a comma-delimited list. By default, all attributes are selected. Not valid for plural (“collection”) association attributes."
+          },
+          {
+            "in": "query",
+            "name": "omit",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,name,description,published_at"
+            },
+            "description": "The attributes to exclude from the result, specified as a comma-delimited list. Cannot be used in conjuction with `select`. Not valid for plural (“collection”) association attributes."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Responds with a single **role** record as a JSON dictionary",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/role"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Response denoting **role** record with specified ID **NOT** found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update role",
+        "description": "Update an existing **role** record.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/update",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/update"
+        },
+        "tags": [
+          "role"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ModelPKParam-role"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Responds with the newly updated **role** record as a JSON dictionary",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/role"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation errors; details in JSON response"
+          },
+          "404": {
+            "description": "Cannot update, **role** record with specified ID **NOT** found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "requestBody": {
+          "description": "JSON dictionary representing the role instance to update.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/role-without-required-constraint"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete role (destroy)",
+        "description": "Delete the **role** record with the specified ID.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/destroy",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/destroy"
+        },
+        "tags": [
+          "role"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ModelPKParam-role"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Responds with a JSON dictionary representing the destroyed **role** instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/role"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cannot destroy, **role** record with specified ID **NOT** found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
     "/users": {
       "get": {
         "summary": "List users (find where)",
@@ -2931,7 +4907,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,login,hashed_password,firstname,lastname,email,admin,last_login_on,language,auth_source_id,salt,must_change_password,passwd_changed_on,published_at"
+              "example": "id,code,name,role,email,phone,is_super_admin"
             },
             "description": "The attributes to include in the result, specified as a comma-delimited list. By default, all attributes are selected. Not valid for plural (“collection”) association attributes."
           },
@@ -2941,7 +4917,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,login,hashed_password,firstname,lastname,email,admin,last_login_on,language,auth_source_id,salt,must_change_password,passwd_changed_on,published_at"
+              "example": "id,code,name,role,email,phone,is_super_admin"
             },
             "description": "The attributes to exclude from the result, specified as a comma-delimited list. Cannot be used in conjuction with `select`. Not valid for plural (“collection”) association attributes."
           }
@@ -3034,7 +5010,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,login,hashed_password,firstname,lastname,email,admin,last_login_on,language,auth_source_id,salt,must_change_password,passwd_changed_on,published_at"
+              "example": "id,code,name,role,email,phone,is_super_admin"
             },
             "description": "The attributes to include in the result, specified as a comma-delimited list. By default, all attributes are selected. Not valid for plural (“collection”) association attributes."
           },
@@ -3044,7 +5020,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,login,hashed_password,firstname,lastname,email,admin,last_login_on,language,auth_source_id,salt,must_change_password,passwd_changed_on,published_at"
+              "example": "id,code,name,role,email,phone,is_super_admin"
             },
             "description": "The attributes to exclude from the result, specified as a comma-delimited list. Cannot be used in conjuction with `select`. Not valid for plural (“collection”) association attributes."
           }

@@ -2,7 +2,7 @@
   "name": "zynomi-api-nodejs",
   "private": true,
   "version": "0.0.0",
-  "description": "API Built on sails.js",
+  "description": "API Built on Node.JS",
   "keywords": [],
   "dependencies": {
     "@sailshq/connect-redis": "^3.2.1",
@@ -52,9 +52,9 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zynomilabs/zynomi-api-nodejs.git"
+    "url": "https://github.com/senthilsweb/api.backend.sailsjs.git"
   },
-  "author": "Zynomi Technologies Pvt. Ltd.",
+  "author": "Senthilnathan Karuppaiah",
   "license": "",
   "engines": {
     "node": "^12.14"

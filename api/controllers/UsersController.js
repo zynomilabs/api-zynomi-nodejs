@@ -1,55 +1,15 @@
 /**
- * usersController
+ * UsersController.js
  *
- * @description :: Server-side logic for managing users
+ * @description :: Server-side logic for managing [users] table or entity
+ *
+ * @author      ::  Zynobot
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
+ *
+ * Created at   :: Sun Feb 27 2022 11:48:01 GMT-0500 (Eastern Standard Time)
+ * Modified at  :: Sun Feb 27 2022 11:48:01 GMT-0500 (Eastern Standard Time)
  */
-const AuthenticateService = require("../services/AuthenticateService");
-var bcrypt = require('bcrypt');
+
 module.exports = {
-
-    Authenticate:function (req, res) {
-        var response = {};
-        
-        
-        try {
-            
-            AuthenticateService.Authenticate( req, res ).then( function ( resp )
-            {
-                response.Data=resp;
-                return res.send(response);
-            });
-
-
-        } catch (e) {
-            response.Success = false;
-            response.Message = e.message;
-            response.Data=[];
-            return res.send(response);
-        }
-
-    },
-    AuthenticateToken:function (req, res) {
-        var response = {};
-        
-        
-        try {
-            
-            AuthenticateService.AuthenticateToken( req, res ).then( function ( resp )
-            {
-                response.Data=resp;
-                return res.send(response);
-            });
-
-
-        } catch (e) {
-            response.Success = false;
-            response.Message = e.message;
-            response.Data=[];
-            return res.send(response);
-        }
-
-    }
+    
 };
-
-

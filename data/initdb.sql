@@ -27,7 +27,7 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
   WHERE (c.relkind = ANY (ARRAY['r'::"char", 'v'::"char"])) AND c.relname = 'State'::name
   ORDER BY n.nspname, c.relname, a.attname;
 ALTER TABLE vw_meta_column
-    OWNER TO postgres;
+    OWNER TO sails;
 
 /*Table creation (Starts)*/
 
@@ -105,6 +105,86 @@ CREATE TABLE
     CREATE SEQUENCE websettings_sequence OWNED BY websettings.id;
     select setval('websettings_sequence',  (SELECT MAX(id) FROM websettings));
 
+CREATE TABLE 
+    bots
+    ( 
+        id SERIAL NOT NULL,
+        code CHARACTER VARYING,
+        name CHARACTER VARYING NOT NULL,
+        description CHARACTER VARYING,
+        bash_command CHARACTER VARYING,
+        bot_file     CHARACTER VARYING,
+        git_repo_url CHARACTER VARYING,
+        git_repo_username CHARACTER VARYING,
+        git_repo_password CHARACTER VARYING,
+        schedule_cron CHARACTER VARYING,
+        tenant            CHARACTER VARYING,
+        additional_attributes JSONB,
+        is_enabled        BOOLEAN DEFAULT true,
+        mark_as_delete    BOOLEAN DEFAULT false,
+        published_at      TIMESTAMP(6) WITH time zone,
+        update_count      INTEGER DEFAULT 0,
+        created_by        INTEGER,
+        updated_by        INTEGER,
+        created_at        TIMESTAMP(6) WITH time zone DEFAULT now(),
+        updated_at        TIMESTAMP(6) WITH time zone DEFAULT now(),
+        PRIMARY KEY (id)
+    );
+        CREATE SEQUENCE bots_sequence OWNED BY bots.id;
+    select setval('bots_sequence',  (SELECT MAX(id) FROM bots));
+
+CREATE TABLE 
+    payments
+    ( 
+        id SERIAL NOT NULL,
+        code CHARACTER VARYING NOT NULL,
+        invoice_nuber     CHARACTER VARYING,
+        payment_to_user   CHARACTER VARYING,
+        payment_date      TIMESTAMP(6) WITH time zone,
+        payment_type      CHARACTER VARYING,
+        payment_amount    CHARACTER VARYING,
+        payment_currency  CHARACTER VARYING,
+        currency_exchange_rate  CHARACTER VARYING,
+        payment_status    CHARACTER VARYING,
+        tenant            CHARACTER VARYING,
+        additional_attributes JSONB,
+        is_enabled        BOOLEAN DEFAULT true,
+        mark_as_delete    BOOLEAN DEFAULT false,
+        published_at      TIMESTAMP(6) WITH time zone,
+        update_count      INTEGER DEFAULT 0,
+        created_by        INTEGER,
+        updated_by        INTEGER,
+        created_at        TIMESTAMP(6) WITH time zone DEFAULT now(),
+        updated_at        TIMESTAMP(6) WITH time zone DEFAULT now(),
+        PRIMARY KEY (id)
+    );
+
+CREATE TABLE 
+    currency
+    ( 
+        id SERIAL NOT NULL,
+        code CHARACTER VARYING NOT NULL,
+        name CHARACTER VARYING,
+        
+        country_name CHARACTER VARYING,
+        currency_name CHARACTER VARYING,
+        currency_three_letter_alpha_num_code CHARACTER VARYING,
+        currency_three_letter_num_code CHARACTER VARYING,
+        description CHARACTER VARYING,
+        
+        
+        tenant            CHARACTER VARYING,
+        additional_attributes JSONB,
+        is_enabled        BOOLEAN DEFAULT true,
+        mark_as_delete    BOOLEAN DEFAULT false,
+        published_at      TIMESTAMP(6) WITH time zone,
+        update_count      INTEGER DEFAULT 0,
+        created_by        INTEGER,
+        updated_by        INTEGER,
+        created_at        TIMESTAMP(6) WITH time zone DEFAULT now(),
+        updated_at        TIMESTAMP(6) WITH time zone DEFAULT now(),
+        PRIMARY KEY (id)
+    );
 
 CREATE TABLE
     users

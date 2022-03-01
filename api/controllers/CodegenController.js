@@ -16,16 +16,18 @@
         params.c_folder = !sails._.isUndefined(req.param('c_folder')) ? req.param('c_folder') : '.code';
         params.v_folder = !sails._.isUndefined(req.param('v_folder')) ? req.param('v_folder') : '.code';
         params.code_author = !sails._.isUndefined(req.param('code_author')) ? req.param('code_author') : 'Zynobot';
-         //Build configuration parameter object (End)
+        //Build configuration parameter object (End)
 
         sails.hooks.views.render(sails.config.codegen.queryColumndefTemplate, params, function (err, view) {
             //sails.log.info(view);
             if (err) {
+                sails.log(err)
                 res.send(err);
             } else {
-                //sails.log(view)   
+                sails.log(view)
                 sails.getDatastore().sendNativeQuery(view, function (err, results) {
                     if (err) {
+                        sails.log(err)
                         res.send(err);
                     } else {
                         //Bring this from custom config.
@@ -36,7 +38,7 @@
 
                         var newmap = [];
                         sails._.each(results.rows, function (o) {
-                            //sails.log("sails._.contains(excludes, o.column_name) = " + sails._.contains(excludes, o.column_name))
+                            sails.log("sails._.contains(excludes, o.column_name) = " + sails._.contains(excludes, o.column_name))
                             if (!sails._.contains(excludes, o.column_name)) {
                                 o.original_data_type = o.data_type;
                                 sails.log(o.column_name + " to be entered into the newmap")
@@ -59,7 +61,7 @@
                                 newmap.push(o);
                                 //sails.log(" o.column_name = " +  o.column_name)
                             }
-                           
+
                         });
                         params.column_names = newmap;
 
@@ -92,6 +94,7 @@
                                 try {
                                     ViewRenderingService.scaffold(crudOptions);
                                 } catch (err) {
+                                    sails.log(err)
                                     res.send(err);
                                 }
                             }

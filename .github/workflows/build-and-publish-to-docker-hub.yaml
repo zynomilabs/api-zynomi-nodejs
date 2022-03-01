@@ -1,22 +1,22 @@
-name: 'Zynomi - GitHub Actions'
+name: "Zynomi - GitHub Actions"
 
 on:
   push:
     tags-ignore:
-    - '**'
+      - "**"
     branches:
-    - main
+      - main
 
 env:
-  project: 'zynomi-api-gotrue'
-  NAME   : 'zynomi/zynomi-api-nodejs' # Docker repository
+  project: "zynomi-api-nodejs"
+  NAME: "zynomi/zynomi-api-nodejs" # Docker repository
 
 jobs:
   docker:
-    name: 'Build & Deploy'
+    name: "Build & Deploy"
     runs-on: ubuntu-latest
     steps:
-      - name: 'Checkout'
+      - name: "Checkout"
         uses: actions/checkout@v2
 
       - name: Declare some variables
