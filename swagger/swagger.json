@@ -29,6 +29,10 @@
       "description": "Sails blueprint actions for the **BaseModel** model"
     },
     {
+      "name": "accountstatement",
+      "description": "Sails blueprint actions for the **accountstatement** model"
+    },
+    {
       "name": "address",
       "description": "Sails blueprint actions for the **address** model"
     },
@@ -149,6 +153,105 @@
             "type": "boolean"
           },
           "additional_attributes": {}
+        }
+      },
+      "accountstatement": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/accountstatement-without-required-constraint"
+          }
+        ]
+      },
+      "accountstatement-without-required-constraint": {
+        "type": "object",
+        "description": "Sails ORM Model **accountstatement**",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "uniqueItems": true,
+            "description": "Note Sails special attributes: autoIncrement"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "invoice_nuber": {
+            "type": "string",
+            "nullable": true
+          },
+          "payment_to_user": {
+            "type": "string",
+            "nullable": true
+          },
+          "payment_date": {},
+          "payment_type": {
+            "type": "string",
+            "nullable": true
+          },
+          "payment_amount": {
+            "type": "string",
+            "nullable": true
+          },
+          "payment_currency": {
+            "type": "string",
+            "nullable": true
+          },
+          "currency_exchange_rate": {
+            "type": "string",
+            "nullable": true
+          },
+          "payment_status": {
+            "type": "string",
+            "nullable": true
+          },
+          "tenant": {
+            "type": "string",
+            "nullable": true
+          },
+          "additional_attributes": {},
+          "is_enabled": {
+            "type": "boolean"
+          },
+          "mark_as_delete": {
+            "type": "boolean"
+          },
+          "published_at": {},
+          "update_count": {
+            "type": "number",
+            "format": "double"
+          },
+          "created_by": {
+            "type": "number",
+            "format": "double"
+          },
+          "updated_by": {
+            "type": "number",
+            "format": "double"
+          },
+          "created_at": {},
+          "updated_at": {},
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "credit_debit": {
+            "type": "string",
+            "nullable": true
+          },
+          "debit": {
+            "type": "number",
+            "format": "double"
+          },
+          "credit": {
+            "type": "number",
+            "format": "double"
+          },
+          "balance": {
+            "type": "number",
+            "format": "double"
+          }
         }
       },
       "address": {
@@ -1125,6 +1228,18 @@
         },
         "description": "The desired **BaseModel** record's primary key value"
       },
+      "ModelPKParam-accountstatement": {
+        "in": "path",
+        "name": "_id",
+        "required": true,
+        "schema": {
+          "type": "integer",
+          "format": "int64",
+          "uniqueItems": true,
+          "description": "Note Sails special attributes: autoIncrement"
+        },
+        "description": "The desired **accountstatement** record's primary key value"
+      },
       "ModelPKParam-address": {
         "in": "path",
         "name": "_id",
@@ -1831,6 +1946,259 @@
           },
           "404": {
             "description": "Cannot destroy, **BaseModel** record with specified ID **NOT** found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/accountstatement": {
+      "get": {
+        "summary": "List accountstatement (find where)",
+        "description": "Find a list of **accountstatement** records that match the specified criteria.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-where",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-where"
+        },
+        "tags": [
+          "accountstatement"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AttributeFilterParam"
+          },
+          {
+            "$ref": "#/components/parameters/WhereQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/LimitQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/SkipQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/SortQueryParam"
+          },
+          {
+            "in": "query",
+            "name": "select",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "id,code,invoice_nuber,payment_to_user,payment_date,payment_type,payment_amount,payment_currency,currency_exchange_rate,payment_status,tenant,additional_attributes,is_enabled,mark_as_delete,published_at,update_count,created_by,updated_by,created_at,updated_at,description,credit_debit,debit,credit,balance"
+            },
+            "description": "The attributes to include in the result, specified as a comma-delimited list. By default, all attributes are selected. Not valid for plural (“collection”) association attributes."
+          },
+          {
+            "in": "query",
+            "name": "omit",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "id,code,invoice_nuber,payment_to_user,payment_date,payment_type,payment_amount,payment_currency,currency_exchange_rate,payment_status,tenant,additional_attributes,is_enabled,mark_as_delete,published_at,update_count,created_by,updated_by,created_at,updated_at,description,credit_debit,debit,credit,balance"
+            },
+            "description": "The attributes to exclude from the result, specified as a comma-delimited list. Cannot be used in conjuction with `select`. Not valid for plural (“collection”) association attributes."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Responds with a paged list of **accountstatement** records that match the specified criteria",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/accountstatement"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create accountstatement",
+        "description": "Create a new **accountstatement** record.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/create",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/create"
+        },
+        "tags": [
+          "accountstatement"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Responds with a JSON dictionary representing the newly created **accountstatement** instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/accountstatement"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation errors; details in JSON response"
+          },
+          "404": {
+            "description": "Resource not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "requestBody": {
+          "description": "JSON dictionary representing the accountstatement instance to create.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/accountstatement"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accountstatement/{_id}": {
+      "get": {
+        "summary": "Get accountstatement (find one)",
+        "description": "Look up the **accountstatement** record with the specified ID.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-one",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-one"
+        },
+        "tags": [
+          "accountstatement"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ModelPKParam-accountstatement"
+          },
+          {
+            "in": "query",
+            "name": "select",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "id,code,invoice_nuber,payment_to_user,payment_date,payment_type,payment_amount,payment_currency,currency_exchange_rate,payment_status,tenant,additional_attributes,is_enabled,mark_as_delete,published_at,update_count,created_by,updated_by,created_at,updated_at,description,credit_debit,debit,credit,balance"
+            },
+            "description": "The attributes to include in the result, specified as a comma-delimited list. By default, all attributes are selected. Not valid for plural (“collection”) association attributes."
+          },
+          {
+            "in": "query",
+            "name": "omit",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "id,code,invoice_nuber,payment_to_user,payment_date,payment_type,payment_amount,payment_currency,currency_exchange_rate,payment_status,tenant,additional_attributes,is_enabled,mark_as_delete,published_at,update_count,created_by,updated_by,created_at,updated_at,description,credit_debit,debit,credit,balance"
+            },
+            "description": "The attributes to exclude from the result, specified as a comma-delimited list. Cannot be used in conjuction with `select`. Not valid for plural (“collection”) association attributes."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Responds with a single **accountstatement** record as a JSON dictionary",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/accountstatement"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Response denoting **accountstatement** record with specified ID **NOT** found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update accountstatement",
+        "description": "Update an existing **accountstatement** record.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/update",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/update"
+        },
+        "tags": [
+          "accountstatement"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ModelPKParam-accountstatement"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Responds with the newly updated **accountstatement** record as a JSON dictionary",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/accountstatement"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation errors; details in JSON response"
+          },
+          "404": {
+            "description": "Cannot update, **accountstatement** record with specified ID **NOT** found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "requestBody": {
+          "description": "JSON dictionary representing the accountstatement instance to update.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/accountstatement-without-required-constraint"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete accountstatement (destroy)",
+        "description": "Delete the **accountstatement** record with the specified ID.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/destroy",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/destroy"
+        },
+        "tags": [
+          "accountstatement"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ModelPKParam-accountstatement"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Responds with a JSON dictionary representing the destroyed **accountstatement** instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/accountstatement"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cannot destroy, **accountstatement** record with specified ID **NOT** found"
           },
           "500": {
             "description": "Internal server error"
