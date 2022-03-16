@@ -17,26 +17,17 @@ var baseModel = require('./BaseModel'),
 module.exports = _.merge({}, baseModel, {
     tableName: 'payments',
     attributes: {
-
         invoice_nuber: { type: 'STRING', allowNull: true },
-
         payment_to_user: { type: 'STRING', allowNull: true },
-
         payment_date: { type: 'ref' },
-
         payment_type: { type: 'STRING', allowNull: true },
         description: { type: 'STRING', allowNull: true },
-
+        credit_debit: { type: 'STRING', allowNull: true },
         payment_amount: { type: 'STRING', allowNull: true },
-
         payment_currency: { type: 'STRING', allowNull: true },
-
         currency_exchange_rate: { type: 'STRING', allowNull: true },
-
         payment_status: { type: 'STRING', allowNull: true },
-
         published_at: { type: 'ref' },
-
     },
     // Lifecycle Callbacks
     beforeCreate: function (values, cb) {

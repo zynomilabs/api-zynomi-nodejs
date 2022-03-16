@@ -1028,6 +1028,10 @@
             "type": "string",
             "nullable": true
           },
+          "credit_debit": {
+            "type": "string",
+            "nullable": true
+          },
           "payment_amount": {
             "type": "string",
             "nullable": true
@@ -4769,7 +4773,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,invoice_nuber,payment_to_user,payment_date,payment_type,description,payment_amount,payment_currency,currency_exchange_rate,payment_status,published_at"
+              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,invoice_nuber,payment_to_user,payment_date,payment_type,description,credit_debit,payment_amount,payment_currency,currency_exchange_rate,payment_status,published_at"
             },
             "description": "The attributes to include in the result, specified as a comma-delimited list. By default, all attributes are selected. Not valid for plural (“collection”) association attributes."
           },
@@ -4779,7 +4783,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,invoice_nuber,payment_to_user,payment_date,payment_type,description,payment_amount,payment_currency,currency_exchange_rate,payment_status,published_at"
+              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,invoice_nuber,payment_to_user,payment_date,payment_type,description,credit_debit,payment_amount,payment_currency,currency_exchange_rate,payment_status,published_at"
             },
             "description": "The attributes to exclude from the result, specified as a comma-delimited list. Cannot be used in conjuction with `select`. Not valid for plural (“collection”) association attributes."
           }
@@ -4872,7 +4876,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,invoice_nuber,payment_to_user,payment_date,payment_type,description,payment_amount,payment_currency,currency_exchange_rate,payment_status,published_at"
+              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,invoice_nuber,payment_to_user,payment_date,payment_type,description,credit_debit,payment_amount,payment_currency,currency_exchange_rate,payment_status,published_at"
             },
             "description": "The attributes to include in the result, specified as a comma-delimited list. By default, all attributes are selected. Not valid for plural (“collection”) association attributes."
           },
@@ -4882,7 +4886,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,invoice_nuber,payment_to_user,payment_date,payment_type,description,payment_amount,payment_currency,currency_exchange_rate,payment_status,published_at"
+              "example": "id,code,created_by,updated_by,created_at,updated_at,update_count,is_enabled,mark_as_delete,additional_attributes,invoice_nuber,payment_to_user,payment_date,payment_type,description,credit_debit,payment_amount,payment_currency,currency_exchange_rate,payment_status,published_at"
             },
             "description": "The attributes to exclude from the result, specified as a comma-delimited list. Cannot be used in conjuction with `select`. Not valid for plural (“collection”) association attributes."
           }
