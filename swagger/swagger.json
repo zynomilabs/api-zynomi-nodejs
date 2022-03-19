@@ -77,6 +77,10 @@
       "description": "Sails blueprint actions for the **payments** model"
     },
     {
+      "name": "queryexecutor",
+      "description": "Sails blueprint actions for the **queryexecutor** model"
+    },
+    {
       "name": "role",
       "description": "Sails blueprint actions for the **role** model"
     },
@@ -1051,6 +1055,26 @@
           "published_at": {}
         }
       },
+      "queryexecutor": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/queryexecutor-without-required-constraint"
+          }
+        ]
+      },
+      "queryexecutor-without-required-constraint": {
+        "type": "object",
+        "description": "Sails ORM Model **queryexecutor**",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "uniqueItems": true,
+            "description": "Note Sails special attributes: autoIncrement"
+          }
+        }
+      },
       "role": {
         "type": "object",
         "allOf": [
@@ -1376,6 +1400,18 @@
         },
         "description": "The desired **payments** record's primary key value"
       },
+      "ModelPKParam-queryexecutor": {
+        "in": "path",
+        "name": "_id",
+        "required": true,
+        "schema": {
+          "type": "integer",
+          "format": "int64",
+          "uniqueItems": true,
+          "description": "Note Sails special attributes: autoIncrement"
+        },
+        "description": "The desired **queryexecutor** record's primary key value"
+      },
       "ModelPKParam-role": {
         "in": "path",
         "name": "_id",
@@ -1525,6 +1561,26 @@
         "summary": "/codegen/columndef",
         "tags": [
           "codegen"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "The requested resource"
+          },
+          "404": {
+            "description": "Resource not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/query/execute": {
+      "post": {
+        "summary": "/query/execute",
+        "tags": [
+          "queryexecutor"
         ],
         "parameters": [],
         "responses": {
@@ -4986,6 +5042,259 @@
           },
           "404": {
             "description": "Cannot destroy, **payments** record with specified ID **NOT** found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/queryexecutor": {
+      "get": {
+        "summary": "List queryexecutor (find where)",
+        "description": "Find a list of **queryexecutor** records that match the specified criteria.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-where",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-where"
+        },
+        "tags": [
+          "queryexecutor"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AttributeFilterParam"
+          },
+          {
+            "$ref": "#/components/parameters/WhereQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/LimitQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/SkipQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/SortQueryParam"
+          },
+          {
+            "in": "query",
+            "name": "select",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "id"
+            },
+            "description": "The attributes to include in the result, specified as a comma-delimited list. By default, all attributes are selected. Not valid for plural (“collection”) association attributes."
+          },
+          {
+            "in": "query",
+            "name": "omit",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "id"
+            },
+            "description": "The attributes to exclude from the result, specified as a comma-delimited list. Cannot be used in conjuction with `select`. Not valid for plural (“collection”) association attributes."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Responds with a paged list of **queryexecutor** records that match the specified criteria",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/queryexecutor"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create queryexecutor",
+        "description": "Create a new **queryexecutor** record.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/create",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/create"
+        },
+        "tags": [
+          "queryexecutor"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Responds with a JSON dictionary representing the newly created **queryexecutor** instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/queryexecutor"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation errors; details in JSON response"
+          },
+          "404": {
+            "description": "Resource not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "requestBody": {
+          "description": "JSON dictionary representing the queryexecutor instance to create.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/queryexecutor"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/queryexecutor/{_id}": {
+      "get": {
+        "summary": "Get queryexecutor (find one)",
+        "description": "Look up the **queryexecutor** record with the specified ID.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-one",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-one"
+        },
+        "tags": [
+          "queryexecutor"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ModelPKParam-queryexecutor"
+          },
+          {
+            "in": "query",
+            "name": "select",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "id"
+            },
+            "description": "The attributes to include in the result, specified as a comma-delimited list. By default, all attributes are selected. Not valid for plural (“collection”) association attributes."
+          },
+          {
+            "in": "query",
+            "name": "omit",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "id"
+            },
+            "description": "The attributes to exclude from the result, specified as a comma-delimited list. Cannot be used in conjuction with `select`. Not valid for plural (“collection”) association attributes."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Responds with a single **queryexecutor** record as a JSON dictionary",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/queryexecutor"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Response denoting **queryexecutor** record with specified ID **NOT** found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update queryexecutor",
+        "description": "Update an existing **queryexecutor** record.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/update",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/update"
+        },
+        "tags": [
+          "queryexecutor"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ModelPKParam-queryexecutor"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Responds with the newly updated **queryexecutor** record as a JSON dictionary",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/queryexecutor"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation errors; details in JSON response"
+          },
+          "404": {
+            "description": "Cannot update, **queryexecutor** record with specified ID **NOT** found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "requestBody": {
+          "description": "JSON dictionary representing the queryexecutor instance to update.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/queryexecutor-without-required-constraint"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete queryexecutor (destroy)",
+        "description": "Delete the **queryexecutor** record with the specified ID.",
+        "externalDocs": {
+          "url": "https://sailsjs.com/documentation/reference/blueprint-api/destroy",
+          "description": "See https://sailsjs.com/documentation/reference/blueprint-api/destroy"
+        },
+        "tags": [
+          "queryexecutor"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ModelPKParam-queryexecutor"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Responds with a JSON dictionary representing the destroyed **queryexecutor** instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/queryexecutor"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cannot destroy, **queryexecutor** record with specified ID **NOT** found"
           },
           "500": {
             "description": "Internal server error"
