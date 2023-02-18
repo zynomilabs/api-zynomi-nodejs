@@ -1,5 +1,5 @@
 ﻿module.exports.codegen = {
-    baseFields: ['id', 'created_at', 'updated_at', 'created_by', 'updated_by', 'is_enabled', 'update_count', 'code', 'tenant', 'additional_attributes', 'mark_as_delete'],
+    baseFields: ['id', 'created_at', 'updated_at', 'created_by', 'updated_by', 'is_archived', 'update_count', 'tenant', 'additional_attributes', 'is_active'],
     stringTypesInPostgreSql: ['character', 'char', 'character varying'],
     stringTypesInSails: 'STRING',
     numericTypesInPostgreSql: ['int', 'bigint', 'numeric', 'double precision'],
@@ -18,5 +18,6 @@
     queryTabledefTemplate: 'queries/tabledef',
     queryViewdefTemplate: 'queries/viewdef',
     menuitems: 'queries/menuitems',
-    crudCodeTemplates: ['code/crud.vue/EntityDataTable', 'code/crud.vue/EntityDataTable', 'code/crud.vue/EntityDataTableActionButtons', 'code/crud.vue/EntityPageHeader', 'code/crud.vue/EntitySearch', 'code/crud.vue/EntityUpsert', 'code/crud.vue/index']
+    //crudCodeTemplates: ['code/crud.vue/EntityDataTable', 'code/crud.vue/EntityDataTable', 'code/crud.vue/EntityDataTableActionButtons', 'code/crud.vue/EntityPageHeader', 'code/crud.vue/EntitySearch', 'code/crud.vue/EntityUpsert', 'code/crud.vue/index']
+    crudCodeTemplates: ['code/nuxt3.vue/EntityGrid', 'code/nuxt3.vue/EntityPageHeader', 'code/nuxt3.vue/EntitySearch', 'code/nuxt3.vue/index', 'code/nuxt3.vue/EntityUpsert']
 };

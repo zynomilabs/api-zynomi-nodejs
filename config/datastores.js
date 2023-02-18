@@ -51,7 +51,6 @@ module.exports.datastores = {
     *                                                                          *
     ***************************************************************************/
     adapter: 'sails-postgresql',
-    //url: 'postgres://zypress_user:zypress_pwd@18.189.3.157:5432/zypress_db',
     url: process.env.DB_URI,
     schemaName: process.env.DB_SCHEMA,
   },

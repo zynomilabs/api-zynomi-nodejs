@@ -1,0 +1,59 @@
+<!--
+  author: Senthilnathan Karuppaiah
+  created_at: 13-Feb-2023
+  modified_at: 13-Feb-2023
+  description: This is the page header component hosts the Search and Upsert Action buttons for the [<%= table %>] entity
+-->
+<template>
+	<header class="w-full">
+		<div class="relative z-10 flex-shrink-0 h-16 bg-white border-b border-gray-200 shadow-sm flex">
+			<div class="flex-1 flex justify-between px-2 sm:px-2">
+				<div class="flex-1 min-w-0">
+					<h2 class="text-lg leading-7 font-medium">
+						{{ props.heading }}
+					</h2>
+					<div>
+						<p class="text-sm leading-5 text-gray-400">
+							{{ props.guide }}
+						</p>
+					</div>
+				</div>
+
+				<div v-if="props.showbutton == 'true'"
+					class="ml-2 mt-2 pr-6 flex items-center space-x-4 sm:ml-6 sm:space-x-6">
+					<button @click="useNuxtApp().$bus.$emit(`${props.searchClickEvent}`)" type="button"
+						class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-base font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+							stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+								d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+						</svg>
+					</button>
+					<button type="button" @click="useNuxtApp().$bus.$emit(`${props.addClickEvent}`)"
+						class="relative inline-flex items-center rounded-md border border-transparent bg-primary-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
+						<svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+							stroke="currentColor" aria-hidden="true">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+								d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+						</svg>
+						Add a <%= table %>
+					</button>
+				</div>
+			</div>
+		</div>
+	</header>
+</template>
+<!--Server and client side javascript-->
+<script setup>
+//-----------------------------------------------------------------------------------------------------
+//1. Page level imports
+//-----------------------------------------------------------------------------------------------------
+//Nil
+
+//-----------------------------------------------------------------------------------------------------
+//2. Page level variables
+//-----------------------------------------------------------------------------------------------------
+
+const props = defineProps(['heading', 'showbutton', 'guide', 'addClickEvent', 'searchClickEvent']);
+
+</script>
