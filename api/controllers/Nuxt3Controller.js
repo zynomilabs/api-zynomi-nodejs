@@ -28,10 +28,7 @@
                     } else {
                         //Bring this from custom config.
                         var excludes = [];
-                        if (params.inheritbase) {
-                            excludes = sails.config.codegen.baseFields;
-                        }
-
+                        excludes = sails.config.codegen.baseFields;
                         var newmap = [];
                         sails._.each(results.rows, function (o) {
                             sails.log("sails._.contains(excludes, o.column_name) = " + sails._.contains(excludes, o.column_name))
