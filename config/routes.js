@@ -40,6 +40,7 @@ module.exports.routes = {
   'post /file/downloadlink/fileid': "UploadController.DownloadFileUrl",
   'post /file/move': "UploadController.MoveFile",
   'post /codegen/columndef': "CodegenController.columndef",
+  'post /generate/nuxt3/code': "Nuxt3Controller.generate",
   'post /query/execute': "QueryExecutorController.execute",
   'get /site/navigation/menuitems': "NavigationController.menuitems",
   'post /email/send': "EmailController.sendEmail",

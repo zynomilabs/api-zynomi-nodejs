@@ -1,0 +1,14 @@
+import { createClient } from '@supabase/supabase-js';
+const supabase = createClient(`${process.env.SUPABASE_URL}`, `${process.env.SUPABASE_KEY}`);
+
+export default eventHandler(async (event) => {
+  const body = await readBody(event); // only for POST | PUT | PATCH | DELETE requests
+  const { id } = event.context.params;
+  console.log('body=', JSON.stringify(body));
+  console.log('id=', id);
+  const { data, error } = await supabase.from('<%= String(table).toLowerCase() %>').update(body).eq('id', id);
+  if (error) {
+    return error;
+  }
+  return data;
+});

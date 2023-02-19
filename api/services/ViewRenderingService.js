@@ -38,26 +38,35 @@ module.exports = {
     try {
       sails.log.info("Inside code generation");
       for (i = 0; i < options.template.length; i++) {
-        //sails.log("options.template[i]=" + options.template[i])
+        sails.log(options.template[i] + " creation (start)")
         sails.hooks.views.render(
           options.template[i],
           options.data,
           function (err, view) {
             if (err) {
+              sails.log("Excception", err)
               throw err;
             } else {
+              sails.log("Inside renderring")
               var EntityName = sails._s.capitalize(options.data.table);
-              var fileName = (options.template[i].split("/").pop() + '.vue').replace("Entity",EntityName)
-              fsextra.outputFile(options.savetofolder  + EntityName.toLowerCase() + "/" + fileName, view, function (err) {
+              var fileName = '';
+              if (options.code_layer == 'frontend') {
+                fileName = (options.template[i].split("/").pop() + '.vue').replace("Entity", EntityName)
+              } else {
+                fileName = options.template[i].split("/").pop()
+              }
+              sails.log("fileName=[" + fileName + "]")
+              fsextra.outputFile(options.savetofolder + "/" + EntityName.toLowerCase() + "/" + fileName, view, function (err) {
                 if (err) throw err;
               });
               return view;
             }
           }
         );
+        sails.log(options.template[i] + " creation (end)")
       }
     } catch (e) {
-      sails.log.error(e);
+      sails.log.error(sails.log(options.template[i] + " Failed to create !................."));
     }
   },
 };

@@ -1,4 +1,4 @@
-﻿SELECT c.ordinal_position, c.column_name, (SELECT description FROM zypress.vw_meta_column WHERE column_name =
+﻿SELECT c.ordinal_position, c.column_name, (SELECT description FROM vw_meta_column WHERE column_name =
 c.column_name AND relname = c.table_name ) AS desc, c.data_type, c.column_default, c.is_nullable,
 c.character_maximum_length, c.numeric_precision FROM information_schema.columns c <% if (_.isEmpty(table)==false) { %>
 WHERE c.table_name = '<%= table%>' <% } %> ORDER BY c.ordinal_position
