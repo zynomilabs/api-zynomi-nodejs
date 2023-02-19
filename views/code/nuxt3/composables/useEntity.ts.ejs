@@ -1,0 +1,8 @@
+export const use<%= sails._s.capitalize(table) %> = async () => {
+  //let query = '/api/<%= String(table).toLowerCase() %>?is_active=eq.true&is_archived=eq.false&select=code,name,is_active';
+  let query = '/api/<%= String(table).toLowerCase() %>?select=*';
+  const <%= String(table).toLowerCase() %> = await useFetch(query, {
+    method: 'get',
+  });
+  return <%= String(table).toLowerCase() %>;
+};

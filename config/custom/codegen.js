@@ -20,5 +20,7 @@
     menuitems: 'queries/menuitems',
     //crudCodeTemplates: ['code/crud.vue/EntityDataTable', 'code/crud.vue/EntityDataTable', 'code/crud.vue/EntityDataTableActionButtons', 'code/crud.vue/EntityPageHeader', 'code/crud.vue/EntitySearch', 'code/crud.vue/EntityUpsert', 'code/crud.vue/index']
     nuxt_frontend_code_templates: ['code/nuxt3/pages/EntityGrid', 'code/nuxt3/pages/EntityPageHeader', 'code/nuxt3/pages/EntitySearch', 'code/nuxt3/pages/index', 'code/nuxt3/pages/EntityUpsert'],
-    nuxt_server_code_templates: ['code/nuxt3/server/[id].ts', 'code/nuxt3/server/[id].put.ts', 'code/nuxt3/server/[id].delete.js', 'code/nuxt3/server/create.post.ts', 'code/nuxt3/server/index.get.js']
+    nuxt_server_code_templates: ['code/nuxt3/server/[id].ts', 'code/nuxt3/server/[id].put.ts', 'code/nuxt3/server/[id].delete.js', 'code/nuxt3/server/create.post.ts', 'code/nuxt3/server/index.get.js'],
+    nuxt_composable_code_templates: ['code/nuxt3/composables/useEntity.ts'],
+    nuxt_store_code_templates: ['code/nuxt3/stores/entity.ts'],
 };

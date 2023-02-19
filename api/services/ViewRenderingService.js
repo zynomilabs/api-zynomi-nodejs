@@ -52,13 +52,26 @@ module.exports = {
               var fileName = '';
               if (options.code_layer == 'frontend') {
                 fileName = (options.template[i].split("/").pop() + '.vue').replace("Entity", EntityName)
-              } else {
+              } else if (options.code_layer == 'server') {
                 fileName = options.template[i].split("/").pop()
+              } else if (options.code_layer == 'composable') {
+                fileName = (options.template[i].split("/").pop()).replace("Entity", EntityName)
+              } else if (options.code_layer == 'store') {
+                fileName = (options.template[i].split("/").pop()).replace("entity", EntityName.toLowerCase())
               }
+
               sails.log("fileName=[" + fileName + "]")
-              fsextra.outputFile(options.savetofolder + "/" + EntityName.toLowerCase() + "/" + fileName, view, function (err) {
-                if (err) throw err;
-              });
+
+              if (options.code_layer == 'composable') {
+                fsextra.outputFile(options.savetofolder + "/" + fileName, view, function (err) {
+                  if (err) throw err;
+                });
+              } else {
+                fsextra.outputFile(options.savetofolder + "/" + EntityName.toLowerCase() + "/" + fileName, view, function (err) {
+                  if (err) throw err;
+                });
+              }
+
               return view;
             }
           }

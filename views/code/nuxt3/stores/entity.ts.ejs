@@ -1,0 +1,29 @@
+import { defineStore } from 'pinia';
+
+export const use<%= sails._s.capitalize(table) %>Store = defineStore('<%= String(table).toLowerCase() %>', {
+  state: () => ({
+    <%= String(table).toLowerCase() %>: [],
+  }),
+  getters: {
+    <%= String(table).toLowerCase() %>_by_code: (state) => (code) => {
+      let result = state.<%= String(table).toLowerCase() %>.filter((object) => {
+        return object.code == code;
+      });
+      return result.length > 0 ? result[0] : undefined;
+    },
+    <%= String(table).toLowerCase() %>_by_name: (state) => (name) => {
+      let result = state.<%= String(table).toLowerCase() %>.filter((object) => {
+        return object.name == name;
+      });
+      return result.length > 0 ? result[0] : undefined;
+    },
+  },
+  actions: {
+    update<%= sails._s.capitalize(table) %>(item) {
+      this.<%= String(table).toLowerCase() %>.push({ item });
+    },
+    reload<%= sails._s.capitalize(table) %>(items) {
+      this.<%= String(table).toLowerCase() %> = items;
+    },
+  },
+});

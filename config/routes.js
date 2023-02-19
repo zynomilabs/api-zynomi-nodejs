@@ -32,21 +32,18 @@ module.exports.routes = {
   * not match any of those, it is matched against static assets.             *
   *                                                                          *
   ***************************************************************************/
-  'post /authenticate': "UsersController.Authenticate",
-  'post /authenticateToken': "UsersController.AuthenticateToken",
+  //'post /authenticate': "UsersController.Authenticate",
+  //'post /authenticateToken': "UsersController.AuthenticateToken",
   'post /file/upload': "UploadController.FileUpload",
   //'get /file/upload':"UploadController.FileUpload",
   'post /file/delete': "UploadController.DeleteFile",
   'post /file/downloadlink/fileid': "UploadController.DownloadFileUrl",
-  'post /file/move': "UploadController.MoveFile",
-  'post /codegen/columndef': "CodegenController.columndef",
-  'post /generate/nuxt3/code': "Nuxt3Controller.generate",
-  'post /query/execute': "QueryExecutorController.execute",
-  'get /site/navigation/menuitems': "NavigationController.menuitems",
+  //'post /codegen/columndef': "CodegenController.columndef",
+  'post /generate/nuxt3/code': "Nuxt3CodeGenController.generate",
   'post /email/send': "EmailController.sendEmail",
   'post /email/forgotpassword': "EmailController.sendForgotPassword",
   'post /email/send/generic': "EmailController.sendEmailGeneric",
   'post /template/bind': "EmailController.renderContent",
-  'post /user/signin': "AccountController.signIn",
+  //'post /user/signin': "AccountController.signIn",
   'post /export/word': { controller: 'export', action: 'word' },
 };

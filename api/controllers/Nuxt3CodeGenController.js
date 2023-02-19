@@ -1,7 +1,7 @@
 ﻿module.exports = {
     //-----------------------------------------------
     //
-    // POST http://localhost:1337/codegen/columndef?id=master&generatecode=true&inheritbase=true
+    // POST http://localhost:1337/generate/nuxt3/code?entity=applications
     //------------------------------------------------
     generate: function (req, res) {
 
@@ -60,7 +60,7 @@
 
                         var crudOptions = {};
 
-                        //Generate nuxt3 frontend code
+                        //1) Generate nuxt3 frontend code
                         crudOptions.template = sails.config.codegen.nuxt_frontend_code_templates;
                         crudOptions.code_layer = 'frontend'
                         sails.log.info(JSON.stringify(sails.config.codegen.nuxt_frontend_code_templates))
@@ -75,15 +75,13 @@
                             res.send(err);
                         }
 
-                        //Generate nuxt3 server code
+                        //2) Generate nuxt3 server code
 
                         crudOptions.template = sails.config.codegen.nuxt_server_code_templates;
                         crudOptions.code_layer = 'server'
-                        //sails.log.info(JSON.stringify(sails.config.codegen.nuxt_server_code_templates))
                         crudOptions.savetofolder = params.v_folder + "/server/api";
                         crudOptions.data = params;
                         crudOptions.data.table = sails._s.capitalize(crudOptions.data.table)
-                        //sails.log.info(JSON.stringify(crudOptions))
                         try {
                             ViewRenderingService.scaffold(crudOptions);
                         } catch (err) {
@@ -91,6 +89,34 @@
                             res.send(err);
                         }
 
+                        //3) Generate nuxt3 composable code
+
+                        crudOptions.template = sails.config.codegen.nuxt_composable_code_templates;
+                        crudOptions.code_layer = 'composable'
+                        crudOptions.savetofolder = params.v_folder + "/composables";
+                        crudOptions.data = params;
+                        crudOptions.data.table = sails._s.capitalize(crudOptions.data.table)
+                        try {
+                            ViewRenderingService.scaffold(crudOptions);
+                        } catch (err) {
+                            sails.log(err)
+                            res.send(err);
+                        }
+
+
+                        //4) Generate nuxt3 store code
+
+                        crudOptions.template = sails.config.codegen.nuxt_store_code_templates;
+                        crudOptions.code_layer = 'store'
+                        crudOptions.savetofolder = params.v_folder + "/stores/";
+                        crudOptions.data = params;
+                        crudOptions.data.table = sails._s.capitalize(crudOptions.data.table)
+                        try {
+                            ViewRenderingService.scaffold(crudOptions);
+                        } catch (err) {
+                            sails.log(err)
+                            res.send(err);
+                        }
 
                         res.send(params);
                     }
